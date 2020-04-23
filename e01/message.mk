@@ -1,4 +1,6 @@
-.PHONY: message source_files object_files
+.PHONY: message source_files object_files \
+	exec
+
 message:
 	$(info info message)
 	$(warning warning message)
@@ -11,5 +13,8 @@ source_files:
 object_files:
 	@echo $(patsubst %.c,%.o,$(wildcard *.c))
 
-
+exec:
+	@cd /tmp
+	@pwd
+	@cd /tmp; pwd
 	
