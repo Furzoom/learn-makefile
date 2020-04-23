@@ -1,5 +1,5 @@
 .PHONY: message source_files object_files \
-	exec
+	exec pre-define
 
 message:
 	$(info info message)
@@ -17,4 +17,11 @@ exec:
 	@cd /tmp
 	@pwd
 	@cd /tmp; pwd
-	
+
+define print-list
+@echo $@: $^
+endef
+
+pre-define: Makefile
+	$(print-list)
+
