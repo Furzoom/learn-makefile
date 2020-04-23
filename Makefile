@@ -1,6 +1,7 @@
 objects = main.o kbd.o command.o display.o \
 		insert.o search.o files.o utils.o
 
+
 edit: $(objects)
 	cc -o edit $(objects)
 
@@ -12,6 +13,8 @@ insert.o: defs.h buffer.h
 search.o: defs.h buffer.h
 files.o: defs.h buffer.h command.h
 utils.o: defs.h
+
+include message.mk
 
 .PHONY: clean
 clean:
