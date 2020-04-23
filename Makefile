@@ -13,5 +13,6 @@ search.o: defs.h buffer.h
 files.o: defs.h buffer.h command.h
 utils.o: defs.h
 
+.PHONY: clean
 clean:
 	rm edit $(objects) 
