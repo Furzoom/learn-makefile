@@ -84,6 +84,12 @@ result := $($(prefix)_$(suffix))
 e3:
 	@echo $(result) # Furzoom
 
+# Append to variable
+obj = a.o b.o
+obj += c.o
+obj:
+	@echo $(obj)
+
 clean:
 	$(RM) prog.o
 
