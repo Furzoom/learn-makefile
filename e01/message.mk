@@ -1,5 +1,5 @@
 .PHONY: message source_files object_files \
-	exec pre-define
+	exec pre-define random
 
 message:
 	$(info info message)
@@ -24,4 +24,7 @@ endef
 
 pre-define: Makefile
 	$(print-list)
+
+random:
+	@echo $$$$
 
