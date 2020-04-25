@@ -2,7 +2,7 @@ all = all help subst patsubst strip findstring \
 		filter filter-out sort word wordlist words firstword \
 		lastword example dir notdir suffix basename addsuffix \
 		addprefix join wildcard realpath abspath \
-		foreach if or and call
+		foreach if or and call origin
 
 .PHONY: $(all)
 help:
@@ -46,6 +46,7 @@ include or.mk
 include and.mk
 
 include call.mk
+include origin.mk
 
 # Examples
 include example.mk
