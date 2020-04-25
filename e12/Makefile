@@ -1,7 +1,7 @@
 all = all help subst patsubst strip findstring \
 		filter filter-out sort word wordlist words firstword \
 		lastword example dir notdir suffix basename addsuffix \
-		addprefix join
+		addprefix join wildcard realpath abspath foreach
 
 .PHONY: $(all)
 help:
@@ -34,6 +34,13 @@ include basename.mk
 include addsuffix.mk
 include addprefix.mk
 include join.mk
+include wildcard.mk
+include realpath.mk
+include abspath.mk
 
+# Other functions
+include foreach.mk
+
+# Examples
 include example.mk
 
