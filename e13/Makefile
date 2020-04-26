@@ -39,12 +39,51 @@
 #   	rm -f y.o
 #   	rm -f z.o
 #
-#  Yacc for C programs
-#    n.c is made automatically from n.y by running Yacc with the 
-#    recipe '$(YACC) $(YFLAGS)'.
+# Yacc for C programs
+#   n.c is made automatically from n.y by running Yacc with the 
+#   recipe '$(YACC) $(YFLAGS)'.
 #
-#  Lex for C programs
-#    n.c is made automatically from n.l by running Lex. The actual
-#    recipe is '$(LEX) $(LFLAGS)'.
+# Lex for C programs
+#   n.c is made automatically from n.l by running Lex. The actual
+#   recipe is '$(LEX) $(LFLAGS)'.
 #
+#
+# Variables Used by Implicit Rules
+#   Here is a table of some of the more common variables sued as
+#   names of programs in built-in rules:
+#
+#   AR - Archive-maintaining program; default 'ar'.
+#   AS - Program for compiling assembly files; default 'as'.
+#   CC - Program for compiling C programs; default 'cc'.
+#   CXX - Program for compiling C++ programs; default 'g++'.
+#   CPP - Program for running the C preprocessor, with results to
+#     standard output; default '$(CC) -E'.
+#   LEX - Program to use to turn Lex grammers into source code;
+#     default 'lex'.
+#   YACC - Program to use to turn Yacc grammers into source code;
+#     default 'yacc'.
+#   LINT - Program to use to run lint on source code; default 'lint'.
+#   TEX - Program to make TeX DVI files from TeX source; default 'tex'.
+#   RM - Command to remove a file; default 'rm -f'.
+#
+#   Here is a table of variables whose values are additional arguments
+#   for the programs above. The default values for all of these is the
+#   empty string, unless otherwise noted.
+#
+#   ARFLAGS - Flags to give the archive-maintaining program; default 
+#     'rv'.
+#   ASFLAGS - Extra flags to give to assembler (when explicit
+#     invoked on a '.s' or '.S' file).
+#   CFLAGS - Extra flags to give to the C compiler.
+#   CXXFLAGS - Extra flags to give to the C++ compiler.
+#   CPPFLAGS - Extra flags to give to the C preprocessor and programs
+#     that use it (the C and Fortran compilers).
+#   LDFLAGS - Extra flags to give to compilers when they are supposed
+#     to invoke the linker, 'ld', such as -L. Libraries (-lfoo)
+#     should be added to the LDLIBS variable instead.
+#   LDLIBS - Library flags or names given to compilers when they are
+#     supposed to invoke the linker, 'ld'. LOADLIBES is deprecated
+#     (but still supported) alternative to LDLIBS. Non-library linker
+#     flags, such as -L, should go in the LDFLAGS variable.
+#   LINTFLAGS - Extra flags go give to lint.
 all:
