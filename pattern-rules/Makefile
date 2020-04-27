@@ -1,4 +1,4 @@
-# Defining and redefining pattern rules
+# DEFINING AND REDEFINING PATTERN RULES
 #
 # You define an implicit rule by writing a pattern rule. A pattern
 # rule looks like an ordinary rule, except that its target contains
@@ -116,6 +116,32 @@
 # $(?F)
 #   Lists of the directory part and the file-within-directory part of 
 #   all prerequisites that are newer than the target.
+#
+# HOW PATTERNS MATCH
+# 
+# A target pattern is composed of a '%' between a prefix and a suffix,
+# either or both of which may be empty. The pattern matches a file name
+# only if the file name starts with the prefix and ends with the suffix,
+# without overlap. The text between the prefix and the suffix is called
+# the stem. Thus, when the pattern '%.o' matches the file name test.o,
+# the stem is 'test'. The pattern rule prerequisites are turned into
+# actual file names by substuting the stem for the character '%'. Thus,
+# if in the same example one of the prerequisites is written as '%.c',
+# it expands to 'test.c'.
+#
+# When the target patten does not contain a slash (and it usually does
+# not), directory names in the file names are removed from the file name
+# before it is compared with the target prefix and suffix. After the 
+# comparison of the file name to the target pattern, the directory names,
+# along with the slash that ends them, are added on to the prerequisite
+# file names generated from the pattern rule's prerequisite patterns and
+# the file name. The directories are ignored only for the purpose of
+# finding an implicit rule to use, not in the application of that rule.
+# Thus, 'e%t' matches the file name src/eat, with 'src/a' as the stem.
+# When prerequisites are turned into file names, the directories from
+# the stem are added at the front, while the rest of the stem is substituted
+# for the '%'. The stem 'src/a' with a prerequisite pattern 'c%r' gives
+# the file name src/car.
 #
 all: c.o a.o b.o a.o | d.o
 	@echo \$$\(@\) $@
